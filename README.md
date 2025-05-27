@@ -37,6 +37,23 @@ flowchart TD
 ## Flow 2: User performs a card transaction
 
 ```mermaid
+graph TD
+    %% Define the core entities
+    A[User]
+    B[Card Provider]
+    C[Kahf]
+    D[Gold Bank]
+
+    %% Simplified Flow
+    A -- 1 . Makes Payment --> B
+    B -- 2 . Notifies Kahf of Spend --> C
+    C -- 3 . Deducts Gold from User's Balance --> C
+    C -- 4 . Instructs Gold Bank to Sell Gold --> D
+    D -- 5 . Sends Cash to Card Provider --> B
+    B -- 6 . Cash Replenished --> B
+```
+
+```mermaid
 
 graph TD
     %% Define the entities/actors
