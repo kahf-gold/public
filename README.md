@@ -40,7 +40,7 @@ flowchart TD
     end
 
     user -->|Deposit GBP| ukAccount
-    ukAccount -->|Transfer funds| goldBank
+    ukAccount -->|Transfer funds. Optional if not enough surplass gold| goldBank
     goldBank -->|Buy and store gold| allocation
     allocation --> ledger
     ledger --> notify
