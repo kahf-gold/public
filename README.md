@@ -35,6 +35,7 @@ flowchart TD
 ```
 
 ## Flow 2: User performs a card transaction
+
 ```mermaid
 
 graph TD
@@ -50,17 +51,17 @@ graph TD
 
     %% Flow 2: User Makes a Payment Using Their Debit Card
     subgraph Flow 2: User Makes a Payment
-        1[User Makes Payment via Card] --> |1. Debit Card Transaction| 2{External Card Partner Authorizes & Settles}
+        1[User Makes Payment via Card] --> |1 Debit Card Transaction| 2{External Card Partner Authorizes & Settles}
         2 --> |1a. Cash Paid from Card Partner's Pool| F
-        2 --> |2. Real-time API Notification of Payment| C
+        2 --> |2 Real-time API Notification of Payment| C
         C --> |2a. Calculate Gold Equivalent & Update User's Gold Balance| D
         D --> |2b. User's Gold Balance Reduced| C
 
         subgraph Overnight Reconciliation & Replenishment
             3[Overnight: Card Partner Tallies All Payments] --> |3a. Reconciliation Report| C
-            C --> |4. Instruct Gold Bank to Liquidate Gold from Kahf's overall balance| E
-            E --> |4a. Cash Out Gold e.g., to USD/GBP| G[Liquidated Cash]
-            G --> |5. Transfer Cash to Card Partner's Liquidity Account| B
+            C --> |4 Instruct Gold Bank to Liquidate Gold from Kahf's overall balance| E
+            E --> |4a. Cash Out Gold - e.g. USD/GBP| G[Liquidated Cash]
+            G --> |5 Transfer Cash to Card Partner's Liquidity Account| B
             B --> |5a. Replenish Card Partner's Cash Pool| B_End(Card Partner's Cash Pool Ready)
         end
 
@@ -71,4 +72,5 @@ graph TD
     C -- "Manages" --> D
     E -- "Holds & Liquidates Gold" --> C
     B -- "Issues Card & Manages Cash" --> A
+
 ```
