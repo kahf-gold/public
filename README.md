@@ -34,7 +34,7 @@ flowchart TD
     classDef bank fill:#bbf,stroke:#333,stroke-width:1.5px;
 ```
 
-
+## Flow 2: User performs a card transaction
 ```mermaid
 
 graph TD
@@ -57,24 +57,18 @@ graph TD
         D --> |2b. User's Gold Balance Reduced| C
 
         subgraph Overnight Reconciliation & Replenishment
-            style 3 fill:#f9f,stroke:#333,stroke-width:2px
-            style 4 fill:#f9f,stroke:#333,stroke-width:2px
-            style 5 fill:#f9f,stroke:#333,stroke-width:2px
-            style 6 fill:#f9f,stroke:#333,stroke-width:2px
-
             3[Overnight: Card Partner Tallies All Payments] --> |3a. Reconciliation Report| C
-            C --> |4. Instruct Gold Bank to Liquidate Gold (from Kahf's overall balance)| E
-            E --> |4a. Cash Out Gold (e.g., to USD/GBP)| C
-
-            5[Liquidated Cash Sent to Card Partner's Liquidity Account] --> |5a. Replenish Card Partner's Cash Pool| B
-            B --> |5b. Ready for Future Payments| 1
-
+            C --> |4. Instruct Gold Bank to Liquidate Gold from Kahf's overall balance| E
+            E --> |4a. Cash Out Gold e.g., to USD/GBP| G[Liquidated Cash]
+            G --> |5. Transfer Cash to Card Partner's Liquidity Account| B
+            B --> |5a. Replenish Card Partner's Cash Pool| B_End(Card Partner's Cash Pool Ready)
         end
+
+        B_End --> |5b. Ready for Future Payments| 1
     end
 
-    %% Link the subgraphs for clarity (optional, but good for visual flow)
+    %% Link the main entities for overall context
     C -- "Manages" --> D
     E -- "Holds & Liquidates Gold" --> C
     B -- "Issues Card & Manages Cash" --> A
-
 ```
