@@ -6,6 +6,22 @@ This project outlines the flows used in Kahf’s gold-backed debit card system.
 
 ## 🪙 Flow 1: User Deposits Money and Acquires Gold
 
+### Simple view
+```mermaid
+graph TD
+    %% Define the core entities
+    A[User]
+    C[Kahf]
+    D[Gold Bank]
+
+    %% Simplified Flow 1: Deposit & Acquire Gold
+    A -- 1 . Deposits Money (GBP) --> C
+    C -- 2 . Sends Money for Gold Purchase --> D
+    D -- 3 . Buys Gold & Stores for Kahf --> C
+    C -- 4 . Allocates Gold to User's Balance --> A
+```
+
+### Detailed view
 ```mermaid
 flowchart TD
     subgraph UK [UK]
@@ -36,6 +52,7 @@ flowchart TD
 
 ## Flow 2: User performs a card transaction
 
+### Simple view
 ```mermaid
 graph TD
     %% Define the core entities
@@ -53,6 +70,7 @@ graph TD
     B -- 6 . Cash Replenished --> B
 ```
 
+### Detailed view
 ```mermaid
 
 graph TD
